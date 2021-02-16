@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Catme",
+  "name": "Catme confirmation page",
   "icons": [
     {
       "src": "favicon.ico",
