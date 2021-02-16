@@ -49,3 +49,10 @@
   display: flex;
   flex-direction: row;
 }
+
+.version{
+  position: absolute;
+  bottom: 10px;
+  color: white;
+  font-size: x-small;
+}
