@@ -4,7 +4,6 @@ import headerImg from './headerImg.png';
 import slack from './slack.png';
 import './App.css';
 import { Button } from '@material-ui/core';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 function App() {
   return (
