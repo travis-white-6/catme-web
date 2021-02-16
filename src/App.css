@@ -44,3 +44,8 @@
   left: 0;
   width: 100%;
 }
+
+.buttonRow{
+  display: flex;
+  flex-direction: row;
+}
