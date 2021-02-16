@@ -56,3 +56,13 @@
   color: white;
   font-size: x-small;
 }
+
+@media all and (max-width: 800px) {
+  .appImg {width: 50%}
+  /*#img2 {display: block;}*/
+}
+
+p {
+  padding-left: 6%;
+  padding-right: 6%;
+}

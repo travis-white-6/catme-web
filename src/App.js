@@ -88,7 +88,7 @@ const buttons = () => {
 const version = () => {
     return (
         <div className='version'>
-            v1.0.2 | made with 💖 in San Francisco
+            v1.0.3 | made with 💖 in San Francisco
         </div>
     )
 }
