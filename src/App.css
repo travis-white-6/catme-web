@@ -66,3 +66,35 @@ p {
   padding-left: 6%;
   padding-right: 6%;
 }
+
+a {
+  color: aqua;
+}
+
+.topLeftHeader {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.topLeftMoreHeader {
+  position: absolute;
+  top: 1rem;
+  left: 7rem;
+}
+
+.App-standard {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-top: 12%;
+  overflow-x: hidden;
+
+}
