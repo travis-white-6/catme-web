@@ -14,7 +14,7 @@ function App() {
         <img src={successImg}  alt="logo" />
         <p>
           Success! CatMe is installed to your workspace<br/>
-          Type the <code>/catme</code> command to get started
+          Type the <code>/catme</code> command to get started meow
         </p>
           <Button
               style={{backgroundColor: "#FFFFFF", color: "#000000"}}
