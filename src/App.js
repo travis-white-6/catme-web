@@ -7,6 +7,7 @@ import Privacy from "./components/Privacy";
 
 
 const slackOauthCall = () => {
+    return
   const queryString = window.location.search;
   let urlParams = new URLSearchParams(queryString);
   let code = urlParams.get('code')
