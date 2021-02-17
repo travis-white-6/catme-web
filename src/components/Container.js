@@ -8,7 +8,6 @@ import mail from "../Mail_white.png";
 import git from "../Github_white.png";
 import { useHistory } from "react-router-dom";
 
-
 export default function Container({isRedirect}) {
     const history = useHistory()
 

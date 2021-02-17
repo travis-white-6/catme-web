@@ -5,12 +5,26 @@ import Container from "./components/Container";
 import Contact from "./components/Contact";
 import Privacy from "./components/Privacy";
 
+
 const slackOauthCall = () => {
   const queryString = window.location.search;
   let urlParams = new URLSearchParams(queryString);
   let code = urlParams.get('code')
-  let authUrl = `?code=${code}&client_secret=${process.env.REACT_APP_SLACK_SECRET}&client_id=${process.env.REACT_APP_SLACK_CLIENT}`
-  fetch(`https://slack.com/api/oauth.v2.access${authUrl}`).then(r => {})
+  let dataBody = {
+      code: code,
+      client_secret: process.env.REACT_APP_SLACK_SECRET,
+      client_id: process.env.REACT_APP_SLACK_CLIENT,
+  }
+  fetch(`https://slack.com/api/oauth.v2.access`, {
+      method: 'POST',
+      body: new URLSearchParams(dataBody),
+      headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded'
+      })
+  })
+      .then(r => r.json())
+      .then(r => console.log(r))
 }
 
 function App() {
