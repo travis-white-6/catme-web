@@ -10,7 +10,10 @@ const slackOauthCall = () => {
   const queryString = window.location.search;
   let urlParams = new URLSearchParams(queryString);
   let code = urlParams.get('code')
-  fetch(`https://us-central1-catme-f243a.cloudfunctions.net/slackAuth?code=${code}`).then(() => {})
+  fetch(`https://us-central1-catme-f243a.cloudfunctions.net/slackAuth?code=${code}`, {
+      method: 'GET',
+      mode: 'no-cors'
+  }).then(() => {})
 }
 
 function App() {
