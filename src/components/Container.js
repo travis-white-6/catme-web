@@ -63,7 +63,7 @@ export default function Container({isRedirect}) {
                                 style={{backgroundColor: "#FFFFFF", color: "#000000"}}
                                 onClick={() => {
                                     setDiscordPressed(true)
-                                    window.open(`https://discord.com/api/oauth2/authorize?client_id=${process.env.REACT_APP_DISCORD_CLIENT}&permissions=51200&scope=bot`)
+                                    window.open(`https://discord.com/api/oauth2/authorize?client_id=813139072351600651&permissions=51200&scope=bot`)
                                 }}
                                 startIcon={<img src={discord} style={{height: 24, width: 24}} alt="logo" />}
                                 variant="contained"
@@ -75,7 +75,7 @@ export default function Container({isRedirect}) {
                         <div className="addButtonMargin">
                             <Button
                                 style={{backgroundColor: "#FFFFFF", color: "#000000"}}
-                                onClick={() => window.open(`https://slack.com/oauth/v2/authorize?client_id=${process.env.REACT_APP_SLACK_CLIENT}&scope=chat:write,commands,links:write&user_scope=`)}
+                                onClick={() => window.open(`https://slack.com/oauth/v2/authorize?client_id=1634522976823.1750784902851&scope=chat:write,commands,links:write&user_scope=`)}
                                 startIcon={<img src={slack} style={{height: 24, width: 24}} alt="logo" />}
                                 variant="contained"
                                 color="primary"
@@ -121,7 +121,7 @@ export default function Container({isRedirect}) {
     const version = () => {
         return (
             <div className='version'>
-                v1.1.0 | made with 💖 in San Francisco
+                v1.1.2 | made with 💖 in San Francisco
             </div>
         )
     }
