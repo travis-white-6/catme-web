@@ -5,9 +5,25 @@ import {Button} from "@material-ui/core";
 import slack from "../slack.png";
 import discord from "../discord.png"
 import web from "../Dribbble_white.png";
+import slackWhite from "../Slack_white.png";
 import mail from "../Mail_white.png";
 import git from "../Github_white.png";
 import { useHistory } from "react-router-dom";
+import ReactGA from 'react-ga';
+
+/**
+ * Event - Add custom tracking event.
+ * @param {string} category
+ * @param {string} action
+ * @param {string} label
+ */
+export const Event = (category, action, label) => {
+    ReactGA.event({
+        category: category,
+        action: action,
+        label: label
+    });
+};
 
 export default function Container({isRedirect}) {
     const history = useHistory()
@@ -24,7 +40,10 @@ export default function Container({isRedirect}) {
                     </p>
                     <Button
                         style={{backgroundColor: "#FFFFFF", color: "#000000"}}
-                        onClick={() => window.open("slack://open", "_parent")}
+                        onClick={() => {
+                            Event("SLACK", "Open in Slack", "Slack_Confirm_Open_App")
+                            window.open("slack://open", "_parent")
+                        }}
                         startIcon={<img src={slack} style={{height: 24, width: 24}} alt="logo" />}
                         variant="contained"
                         color="primary"
@@ -42,7 +61,10 @@ export default function Container({isRedirect}) {
                     </p>
                     <Button
                         style={{backgroundColor: "#FFFFFF", color: "#000000"}}
-                        onClick={() => window.open("discord://", "_parent")}
+                        onClick={() => {
+                            Event("DISCORD", "Open in Discord", "Discord_Confirm_Open_App")
+                            window.open("discord://", "_parent")
+                        }}
                         startIcon={<img src={discord} style={{height: 24, width: 24}} alt="logo" />}
                         variant="contained"
                         color="primary"
@@ -62,6 +84,7 @@ export default function Container({isRedirect}) {
                             <Button
                                 style={{backgroundColor: "#FFFFFF", color: "#000000"}}
                                 onClick={() => {
+                                    Event("DISCORD", "Auth App for Discord", "Discord_Auth_App")
                                     setDiscordPressed(true)
                                     window.open(`https://discord.com/api/oauth2/authorize?client_id=813139072351600651&permissions=51200&scope=bot`)
                                 }}
@@ -75,7 +98,10 @@ export default function Container({isRedirect}) {
                         <div className="addButtonMargin">
                             <Button
                                 style={{backgroundColor: "#FFFFFF", color: "#000000"}}
-                                onClick={() => window.open(`https://slack.com/oauth/v2/authorize?client_id=1634522976823.1750784902851&scope=chat:write,commands,links:write&user_scope=`)}
+                                onClick={() => {
+                                    Event("SLACK", "Auth App for Slack", "Slack_Auth_App")
+                                    window.open(`https://slack.com/oauth/v2/authorize?client_id=1634522976823.1750784902851&scope=chat:write,commands,links:write&user_scope=`)
+                                }}
                                 startIcon={<img src={slack} style={{height: 24, width: 24}} alt="logo" />}
                                 variant="contained"
                                 color="primary"
@@ -94,21 +120,40 @@ export default function Container({isRedirect}) {
         return (
             <div className="buttonRow">
                 <Button
-                    onClick={() => window.open("https://slack.com/apps/A01N2P2SJR1-catme")}
-                    startIcon={<img src={web} style={{height: 24, width: 24}} alt="logo" />}
+                    onClick={() => {
+                        Event("SLACK", "Slack App Homepage", "Bottom_Buttons_Slack_Homepage_App")
+                        window.open("https://slack.com/apps/A01N2P2SJR1-catme")
+                    }}
+                    startIcon={<img src={slackWhite} style={{height: 24, width: 24}} alt="logo" />}
                     variant="text"
                     color="primary"
                     component="span"/>
 
                 <Button
-                    onClick={() => window.open("mailto:travis.lee.white.6@gmail.com", "_parent")}
+                    onClick={() => {
+                        Event("EMAIL", "Email Tracvis", "Bottom_Buttons_Email")
+                        window.open("mailto:travis.lee.white.6@gmail.com", "_parent")
+                    }}
                     startIcon={<img src={mail} style={{height: 24, width: 24}} alt="logo" />}
                     variant="text"
                     color="primary"
                     component="span"/>
 
                 <Button
-                    onClick={() => window.open("https://github.com/travis-white-6/CatMe")}
+                    onClick={() => {
+                        Event("GITHUB", "Github Web Source", "Bottom_Buttons_Github_Web_Home")
+                        window.open("https://github.com/travis-white-6/catme-web")
+                    }}
+                    startIcon={<img src={web} style={{height: 24, width: 24}} alt="logo" />}
+                    variant="text"
+                    color="primary"
+                    component="span"/>
+
+                <Button
+                    onClick={() => {
+                        Event("GITHUB", "Github Source", "Bottom_Buttons_Github_Home")
+                        window.open("https://github.com/travis-white-6/CatMe")
+                    }}
                     startIcon={<img src={git} style={{height: 24, width: 24}} alt="logo" />}
                     variant="text"
                     color="primary"
@@ -121,7 +166,7 @@ export default function Container({isRedirect}) {
     const version = () => {
         return (
             <div className='version'>
-                v1.1.2 | made with 💖 in San Francisco
+                v1.1.3 | made with 💖 in San Francisco
             </div>
         )
     }
@@ -130,7 +175,10 @@ export default function Container({isRedirect}) {
         <div className="topLeftHeader">
             <Button
                 style={{color: "white"}}
-                onClick={() => history.push('/contact')}
+                onClick={() => {
+                    Event("Contact", "Contact Header", "Top Header Contact Tab")
+                    history.push('/contact')
+                }}
                 variant="text"
                 color="primary"
                 component="span">
@@ -144,7 +192,10 @@ export default function Container({isRedirect}) {
         <div className="topLeftMoreHeader">
             <Button
                 style={{color: "white"}}
-                onClick={() => history.push('/privacy')}
+                onClick={() => {
+                    Event("PRIVACY", "Privacy Header", "Top Header Privacy Tab")
+                    history.push('/privacy')
+                }}
                 variant="text"
                 color="primary"
                 component="span">

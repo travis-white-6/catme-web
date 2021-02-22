@@ -4,6 +4,7 @@ import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Container from "./components/Container";
 import Contact from "./components/Contact";
 import Privacy from "./components/Privacy";
+import ReactGA from 'react-ga';
 
 const slackOauthCall = () => {
   const queryString = window.location.search;
@@ -17,12 +18,19 @@ const slackOauthCall = () => {
 
 function App() {
     const [slackAuth, setSlackAuth] = useState(false)
+    const [init, setInit] = useState(true)
 
     useEffect(() => {
         if (window.location.href.includes('redirect') && !slackAuth) {
             setSlackAuth(true)
             slackOauthCall()
         }
+        if (init) {
+            setInit(false)
+            ReactGA.initialize('UA-182229339-2');
+            ReactGA.pageview(window.location.pathname + window.location.search);
+        }
+
     }, [slackAuth])
 
     return (
