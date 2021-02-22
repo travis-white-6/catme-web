@@ -17,17 +17,12 @@ const slackOauthCall = () => {
 
 function App() {
     const [slackAuth, setSlackAuth] = useState(false)
-    const [bot, setBot] = useState(true)
 
     useEffect(() => {
         if (window.location.href.includes('redirect') && !slackAuth) {
             setSlackAuth(true)
             slackOauthCall()
         }
-        // if (bot) {
-        //     setBot(false)
-        //     initBot()
-        // }
     }, [slackAuth])
 
     return (
