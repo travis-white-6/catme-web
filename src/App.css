@@ -50,6 +50,14 @@
   flex-direction: row;
 }
 
+
+.addButtonContainer {
+  width: 35%;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+}
+
 .version{
   position: absolute;
   bottom: 10px;
@@ -58,8 +66,11 @@
 }
 
 @media all and (max-width: 800px) {
-  .appImg {width: 50%}
+  .appImg {width: 80%}
+  .addButtonContainer { flex-direction: column; width: 50%;}
+  .addButtonMargin {margin-bottom: 20px}
   /*#img2 {display: block;}*/
+
 }
 
 p {

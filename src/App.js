@@ -5,7 +5,6 @@ import Container from "./components/Container";
 import Contact from "./components/Contact";
 import Privacy from "./components/Privacy";
 
-
 const slackOauthCall = () => {
   const queryString = window.location.search;
   let urlParams = new URLSearchParams(queryString);
@@ -18,12 +17,17 @@ const slackOauthCall = () => {
 
 function App() {
     const [slackAuth, setSlackAuth] = useState(false)
+    const [bot, setBot] = useState(true)
 
     useEffect(() => {
         if (window.location.href.includes('redirect') && !slackAuth) {
-        setSlackAuth(true)
-        slackOauthCall()
+            setSlackAuth(true)
+            slackOauthCall()
         }
+        // if (bot) {
+        //     setBot(false)
+        //     initBot()
+        // }
     }, [slackAuth])
 
     return (

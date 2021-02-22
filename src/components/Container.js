@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import headerImg from "../headerImg.png";
 import successImg from "../successImg.png";
 import {Button} from "@material-ui/core";
 import slack from "../slack.png";
+import discord from "../discord.png"
 import web from "../Dribbble_white.png";
 import mail from "../Mail_white.png";
 import git from "../Github_white.png";
@@ -11,12 +12,14 @@ import { useHistory } from "react-router-dom";
 export default function Container({isRedirect}) {
     const history = useHistory()
 
+    const [discordPressed, setDiscordPressed] = useState(false)
+
     const bottomData = () => {
         if (isRedirect) {
             return (
                 <>
                     <p>
-                        Success! CatMe is installed to your workspace<br/>
+                        Success! CatMe is installed to the workspace you authorized<br/>
                         Type the <code>/catme</code> command to get started
                     </p>
                     <Button
@@ -30,21 +33,58 @@ export default function Container({isRedirect}) {
                     </Button>
                 </>
             )
+        } else if (discordPressed) {
+            return (
+                <>
+                    <p>
+                        Woo Hoo! If you authorized CatMe for a Discord server<br/>
+                        Type the <code>!catme</code> command to get started
+                    </p>
+                    <Button
+                        style={{backgroundColor: "#FFFFFF", color: "#000000"}}
+                        onClick={() => window.open("discord://", "_parent")}
+                        startIcon={<img src={discord} style={{height: 24, width: 24}} alt="logo" />}
+                        variant="contained"
+                        color="primary"
+                        component="span">
+                        Open
+                    </Button>
+                </>
+            )
         } else {
             return (
                 <>
                     <p>
-                        Add the CatMe bot to your slack today to get random puns and pics
+                        Add the CatMe bot to your Discord or Slack to get random puns and pics
                     </p>
-                    <Button
-                        style={{backgroundColor: "#FFFFFF", color: "#000000"}}
-                        onClick={() => window.open(`https://slack.com/oauth/v2/authorize?client_id=${process.env.REACT_APP_SLACK_CLIENT}&scope=chat:write,commands,links:write&user_scope=`)}
-                        startIcon={<img src={slack} style={{height: 24, width: 24}} alt="logo" />}
-                        variant="contained"
-                        color="primary"
-                        component="span">
-                        Add to slack
-                    </Button>
+                    <div className="addButtonContainer">
+                        <div className="addButtonMargin">
+                            <Button
+                                style={{backgroundColor: "#FFFFFF", color: "#000000"}}
+                                onClick={() => {
+                                    setDiscordPressed(true)
+                                    window.open(`https://discord.com/api/oauth2/authorize?client_id=${process.env.REACT_APP_DISCORD_CLIENT}&permissions=51200&scope=bot`)
+                                }}
+                                startIcon={<img src={discord} style={{height: 24, width: 24}} alt="logo" />}
+                                variant="contained"
+                                color="primary"
+                                component="span">
+                                Add to Discord
+                            </Button>
+                        </div>
+                        <div className="addButtonMargin">
+                            <Button
+                                style={{backgroundColor: "#FFFFFF", color: "#000000"}}
+                                onClick={() => window.open(`https://slack.com/oauth/v2/authorize?client_id=${process.env.REACT_APP_SLACK_CLIENT}&scope=chat:write,commands,links:write&user_scope=`)}
+                                startIcon={<img src={slack} style={{height: 24, width: 24}} alt="logo" />}
+                                variant="contained"
+                                color="primary"
+                                component="span">
+                                Add to slack
+                            </Button>
+                        </div>
+                    </div>
+
                 </>
             )
         }
