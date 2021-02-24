@@ -166,7 +166,7 @@ export default function Container({isRedirect}) {
     const version = () => {
         return (
             <div className='version'>
-                v1.1.3 | made with 💖 in San Francisco
+                v1.1.4 | made with 💖 in San Francisco
             </div>
         )
     }
